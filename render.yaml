@@ -1,0 +1,47 @@
+databases:
+  - name: rudderstack
+    ipAllowList: []
+
+services:
+  - type: web
+    env: docker
+    name: rudderstack-backend
+    dockerfilePath: ./backend/dockerfile
+    dockerContext: ./backend
+    envVars:
+      - key: JOBS_DB_HOST
+        fromDatabase:
+          name: rudderstack
+          property: host
+      - key: JOBS_DB_USER
+        fromDatabase:
+          name: rudderstack
+          property: user
+      - key: JOBS_DB_PORT
+        fromDatabase:
+          name: rudderstack
+          property: port
+      - key: JOBS_DB_DB_NAME
+        fromDatabase:
+          name: rudderstack
+          property: database
+      - key: JOBS_DB_PASSWORD
+        fromDatabase:
+          name: rudderstack
+          property: password
+      - key: CONFIG_BACKEND_URL
+        value: https://api.rudderlabs.com
+      - key: DEST_TRANSFORM_URL
+        fromService:
+          name: rudderstack-transformer
+          type: pserv
+          property: hostport
+      - key: WORKSPACE_TOKEN
+        sync: false # have to manually enter in UI
+
+  - type: pserv
+    env: docker
+    name: rudderstack-transformer
+    dockerfilePath: ./transformer/dockerfile
+    dockerContext: ./transformer
+

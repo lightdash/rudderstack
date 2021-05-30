@@ -1,0 +1,1 @@
+FROM rudderlabs/rudder-transformer:latest
