@@ -1,7 +1,7 @@
 databases:
   - name: rudderstack
     ipAllowList: []
-    plan: starter
+    plan: standard
 
 services:
   - type: web
