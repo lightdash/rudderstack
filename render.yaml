@@ -31,7 +31,7 @@ services:
           property: password
       - key: CONFIG_BACKEND_URL
         value: https://api.rudderlabs.com
-      - key: DEST_TRANSFORM_URL
+      - key: DEST_TRANSFORM_HOSTPORT
         fromService:
           name: rudderstack-transformer
           type: pserv

@@ -1,2 +1,4 @@
 FROM rudderlabs/rudder-server:1-alpine
-ENTRYPOINT ["sh", "-c", "/wait-for $JOBS_DB_HOST:$JOBS_DB_PORT -- /rudder-server"]
+COPY entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/rudder-server"]
