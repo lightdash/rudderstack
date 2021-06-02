@@ -1,6 +1,7 @@
 databases:
   - name: rudderstack
     ipAllowList: []
+    plan: starter
 
 services:
   - type: web
@@ -9,6 +10,7 @@ services:
     dockerfilePath: ./backend/dockerfile
     dockerContext: ./backend
     healthCheckPath: /
+    plan: starter plus
     envVars:
       - key: JOBS_DB_HOST
         fromDatabase:
@@ -45,4 +47,5 @@ services:
     name: rudderstack-transformer
     dockerfilePath: ./transformer/dockerfile
     dockerContext: ./transformer
+    plan: starter plus
 
