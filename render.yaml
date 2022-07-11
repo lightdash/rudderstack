@@ -41,6 +41,11 @@ services:
           property: hostport
       - key: WORKSPACE_TOKEN
         sync: false # have to manually enter in UI
+      - key: STATSD_SERVER_URL
+        fromService:
+          name: rudderstack-statsd
+          type: pserv
+          property: hostport
 
   - type: pserv
     env: docker
@@ -48,4 +53,22 @@ services:
     dockerfilePath: ./transformer/dockerfile
     dockerContext: ./transformer
     plan: starter plus
+    envVars:
+      - key: STATSD_SERVER_HOST
+        fromService:
+          name: rudderstack-statsd
+          type: pserv
+          property: host
+      - key: STATSD_SERVER_PORT
+        fromService:
+          name: rudderstack-statsd
+          type: pserv
+          property: port
+
+  - type: pserv
+    env: docker
+    name: rudderstack-statsd
+    dockerfilePath: ./statsd/dockerfile
+    dockerContext: ./statsd
+    plan: starter
 
