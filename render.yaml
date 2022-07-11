@@ -12,6 +12,8 @@ services:
     healthCheckPath: /
     plan: starter plus
     envVars:
+      - key: PORT
+        value: 8080
       - key: JOBS_DB_HOST
         fromDatabase:
           name: rudderstack
