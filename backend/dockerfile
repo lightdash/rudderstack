@@ -1,4 +1,4 @@
-FROM rudderlabs/rudder-server:latest
+FROM rudderlabs/rudder-server:latest@sha256:f1aabea2e7ac448f7e7adfabf33cfecc2932cb01b41d3f1b428b5cd6beb297c8
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/rudder-server"]
