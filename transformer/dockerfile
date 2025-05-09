@@ -1,1 +1,1 @@
-FROM rudderlabs/rudder-transformer:latest
+FROM rudderstack/rudder-transformer:latest
