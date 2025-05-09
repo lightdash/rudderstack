@@ -1,1 +1,1 @@
-FROM rudderstack/rudder-transformer:latest
+FROM rudderstack/rudder-transformer:1.98.0
